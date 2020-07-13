@@ -16,3 +16,15 @@ const updateCharacterHtml = character => {
 };
 
 button.addEventListener("click", updateCharacter);
+
+
+fetch('http://localhost:8080/api/vendors/add/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        "name": "Added by fetch!",
+        "phoneNumber": "614-867-5309"
+    })
+})

@@ -17,7 +17,23 @@ fetchTaco()
 
 const renderPage = (tacoToDisplay) => {
     const container = document.querySelector('.container');
+
+    while (container.firstChild) {
+        container.firstChild.remove();
+    }
+
     container.prepend(createHeader(tacoToDisplay))
     container.appendChild(createRecipeSection(tacoToDisplay));
     container.appendChild(createFooter())
+
+    addResetButton();
+}
+
+const addResetButton = () => {
+    const button = document.querySelector('.header__taco-reset-button');
+
+    button.addEventListener('click', () => {
+        fetchTaco()
+            .then(taco => renderPage(taco));
+    });
 }
